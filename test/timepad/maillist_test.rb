@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'webmock/minitest'
 
 class Timepad::MaillistTest < MiniTest::Unit::TestCase
 
