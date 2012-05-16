@@ -31,4 +31,13 @@ class Timepad::EventTest < MiniTest::Unit::TestCase
       .to_return(:body => '[]')
     Timepad::Event.get event_id
   end
+
+  def test_shoul_get_event_subscribers
+    event_id = 1
+    stub_http_request(:get, "#{Timepad.endpoint}event_export")
+      .with(:query => {:code => Timepad.key, :id => Timepad.id, :e_id => event_id})
+      .to_return(:body => '[]')
+    Timepad::Event.export event_id
+  end
+
 end

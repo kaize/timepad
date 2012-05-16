@@ -17,5 +17,12 @@ module Timepad
       request('get', :e_id => event_id)
     end
 
+    # Get event subscribers
+    #
+    # @params [String] event_id
+    # @return [Array]
+    def self.export event_id
+      request('export', :e_id => event_id)
+    end
   end
 end
