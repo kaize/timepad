@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Timepad::MaillistTest < MiniTest::Unit::TestCase
+class Timepad::CategoryTest < MiniTest::Unit::TestCase
 
   def setup
     Timepad.configure do |config|
@@ -9,10 +9,10 @@ class Timepad::MaillistTest < MiniTest::Unit::TestCase
     end
   end
 
-  def test_should_get_mailists
-    stub_http_request(:get, "#{Timepad.endpoint}maillist_getlist")
+  def test_should_get_categories
+    stub_http_request(:get, "#{Timepad.endpoint}category_getlist")
       .with(:query => {:code =>  Timepad.key, :id => Timepad.id})
       .to_return(:body => '[]')
-    Timepad::Maillist.get_list
+    Timepad::Category.get_list
   end
 end
