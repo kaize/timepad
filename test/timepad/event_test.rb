@@ -10,34 +10,14 @@ class Timepad::EventTest < MiniTest::Unit::TestCase
   end
 
   def test_should_get_events
-    stub_http_request(:get, "#{Timepad.endpoint}event_getlist")
-      .with(:query => {:code => Timepad.key, :id => Timepad.id})
-      .to_return(:body => '[]')
-    Timepad::Event.get_list
-  end
+    request = stub_http_request(:get, "#{Timepad.endpoint}event_getlist")
+      .with(:query => {:code => Timepad.key, :id => Timepad.id, :limit => 1, :order_by => 'begin'})
+      .to_return(:body => '["test"]')
 
-  def test_should_get_events_by_category
-    category_id = 1
-    stub_http_request(:get, "#{Timepad.endpoint}event_getlist")
-      .with(:query => {:code => Timepad.key, :id => Timepad.id, :cat_id => category_id})
-      .to_return(:body => '[]')
-    Timepad::Event.get_list :cat_id => category_id
-  end
+    result = Timepad.event.get_list :limit => 1, :order_by => :begin
 
-  def test_shoul_get_event
-    event_id = 1
-    stub_http_request(:get, "#{Timepad.endpoint}event_get")
-      .with(:query => {:code => Timepad.key, :id => Timepad.id, :e_id => event_id})
-      .to_return(:body => '[]')
-    Timepad::Event.get event_id
-  end
-
-  def test_shoul_get_event_subscribers
-    event_id = 1
-    stub_http_request(:get, "#{Timepad.endpoint}event_export")
-      .with(:query => {:code => Timepad.key, :id => Timepad.id, :e_id => event_id})
-      .to_return(:body => '[]')
-    Timepad::Event.export event_id
+    assert_requested(request)
+    assert_equal result, ["test"]
   end
 
 end
