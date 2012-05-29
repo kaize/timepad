@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["subbota@gmail.com"]
   gem.description   = %q{Gem that provide access to timepad.ru api}
   gem.summary       = %q{See description}
-  gem.homepage      = ""
+  gem.homepage      = "https://github.com/kaize/timepad/"
 
   gem.files         = `git ls-files`.split("\n")
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
