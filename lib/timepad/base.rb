@@ -29,14 +29,11 @@ module Timepad
       params = {}
       subscribers.each do |subscriber|
         next if subscriber[:email].empty?
-        params[ "i#{i}_email".to_sym ] = subscriber[:email]
-        params[ "i#{i}_name".to_sym ] = subscriber[:name] if subscriber.has_key?(:name)
-        params[ "i#{i}_surname".to_sym ] = subscriber[:surname] if subscriber.has_key?(:surname)
-        params[ "i#{i}_middlename".to_symbol ] = subscriber[:middlename] if subscriber.has_key?(:middlename)
-        params[ "i#{i}_company".to_symbol ] = subscriber[:company] if subscriber.has_key?(:company)
-        params[ "i#{i}_phone".to_symbol ] = subscriber[:phone] if subscriber.has_key?(:phone)
-        params[ "i#{i}_comment".to_symbol ] = subscriber[:comment] if subscriber.has_key?(:comment)
-
+        %w(email name surnname middlename company phone comment).each do |key|
+          if subscriber[key.to_sym]
+            params[ "i#{i}_#{key}".to_sym ] = subscriber[key.to_sym]
+          end
+        end
         i += 1
       end
       params
