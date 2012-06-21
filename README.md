@@ -43,7 +43,7 @@
 
 ## Письма рассылок
 
-   # Отправка письма в рассылку
-   Timepad.mail.create :subject => 'subject', :text => 'text', :maillists => [1,2], :subscribers => ['a@a.a', 'b@b.b']
+    # Отправка письма в рассылку
+    Timepad.mail.create :subject => 'subject', :text => 'text', :maillists => [1,2], :subscribers => ['a@a.a', 'b@b.b']
 
 
