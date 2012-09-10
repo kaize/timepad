@@ -1,5 +1,7 @@
 # Timepad
 
+[![Build Status](https://secure.travis-ci.org/numbata/timepad.png)](http://travis-ci.org/numbata/timepad)
+
 [https://github.com/timepad/timepad\_api/wiki]
 
 ## Установка
