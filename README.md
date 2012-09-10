@@ -25,8 +25,14 @@
 ## События
 
     # Получение списка событий
-    Timepad.event.get_list :limit => 1, :order_by => :begin
+    events = Timepad.event.get_list :limit => 1, :order_by => :begin
 
+    # Альтернативный вариант
+    events = Timepad.events
+
+    # Получение события
+    event = Timepad.event.get 1
+    event = Timepad.event 1
 ## Списки рассылок
 
     # Создание списка рассылок

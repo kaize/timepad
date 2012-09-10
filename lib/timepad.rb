@@ -14,23 +14,25 @@ module Timepad
   extend Config
 
   def self.maillist
-    client
-    @client.maillist
+    client.maillist
   end
 
   def self.mail
-    client
-    @client.mail
+    client.mail
   end
 
   def self.category
-    client
-    @client.category
+    client.category
   end
 
-  def self.event
-    client
-    @client.event
+  def self.event(id = nil)
+    event = client.event
+    id.nil? ? event : event.get(id)
+  end
+
+  def self.events(attrs ={})
+    event = client.event
+    event.get_list attrs
   end
 
   def self.client(attrs = {})

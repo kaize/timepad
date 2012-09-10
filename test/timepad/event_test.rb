@@ -20,4 +20,15 @@ class Timepad::EventTest < MiniTest::Unit::TestCase
     assert_equal result, ["test"]
   end
 
+  def test_should_get_events_too
+    request = stub_http_request(:get, "#{Timepad.endpoint}event_getlist")
+        .with(:query => {:code => Timepad.key, :id => Timepad.id, :limit => 1, :order_by => 'begin'})
+        .to_return(:body => '["test"]')
+
+    result = Timepad.events :limit => 1, :order_by => :begin
+
+    assert_requested(request)
+    assert_equal result, ["test"]
+  end
+
 end

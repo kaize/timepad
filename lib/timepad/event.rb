@@ -9,15 +9,15 @@ module Timepad
     #
     # @param [Hash{cat_id => String, limit => String, order_by =>String}]
     # @return [Array]
-    def get_list params = {}
-      request 'getlist', params
+    def get_list(attrs = {})
+      request 'getlist', attrs
     end
 
     # Get event by event_id
     #
     # @param [String] event_id
     # @return [Array]
-    def get event_id
+    def get(event_id)
       request 'get', :e_id => event_id
     end
 
@@ -25,15 +25,19 @@ module Timepad
     #
     # @params [String] event_id
     # @return [Array]
-    def export event_id
+    def export(event_id)
       request 'export', :e_id => event_id
     end
 
-    def create attrs
+    # Create event
+    #
+    # @params [Hash]
+    # @return [Array]
+    def create(attrs)
       request 'create', attrs
     end
 
-    def register attrs
+    def register(attrs)
       request 'register', attrs
     end
 
