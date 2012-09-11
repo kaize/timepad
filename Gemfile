@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gemspec
 
 group :development, :test do
+  gem 'rake'
   gem 'webmock'
   gem 'json'
   gem 'turn'
