@@ -9,31 +9,41 @@ module Timepad
     #
     # @param [Hash{cat_id => String, limit => String, order_by =>String}]
     # @return [Array]
-    def get_list params = {}
-      request 'getlist', params
+    def get_list(attrs = {})
+      request 'getlist', attrs
     end
 
     # Get event by event_id
     #
     # @param [String] event_id
     # @return [Array]
-    def get event_id
+    def get(event_id)
       request 'get', :e_id => event_id
     end
 
-    # Get event subscribers
+    # Get event members
     #
     # @params [String] event_id
     # @return [Array]
-    def export event_id
-      request 'export', :e_id => event_id
+    def export(event_id, attrs = nil)
+      request_attrs = {:e_id => event_id}
+      request_attrs.merge!(attrs) unless attrs.nil?
+      request 'export', request_attrs
     end
 
-    def create attrs
+    # Create event
+    #
+    # @params [Hash{name => String, }]
+    # @return [Array]
+    def create(attrs)
       request 'create', attrs
     end
 
-    def register attrs
+    # Register event member
+    #
+    # @params [Hash{e_id => String, re_id => String, mail => String}]
+    # @retur [Array]
+    def register(attrs)
       request 'register', attrs
     end
 
