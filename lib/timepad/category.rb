@@ -1,11 +1,15 @@
 module Timepad
   class Category < Base
+    def initialize(timepad_client)
+      @client = timepad_client
+    end
+
 
     # Get all categories
     #
     # @return [Array]
-    def self.get_list
-      request('getlist')
+    def get_list
+      request 'getlist'
     end
 
   end
