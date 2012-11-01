@@ -10,7 +10,7 @@ module Timepad
     end
 
     def make_query(params)
-      params.map{|key, value| value.nil? ? "" : "#{key}=#{value}"}.join('&')
+      params.map{|key, value| value.nil? ? "" : "#{key}=#{URI::encode value.to_s}"}.join('&')
     end
 
     def make_uri(action, params = {})
